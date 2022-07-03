@@ -21,10 +21,14 @@ const searchInput = `pizza`;
 function fetchMeals() {
   //API Key
   const apikey = ('180bcdcaaf334a03a418179e565ed485');
-  //API URL
-  const mealsURL = (`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apikey}&query=`);
+  //API URL   // API Parameters
+  const mealsURL = (`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apikey}&query=${searchInput}`,
+    { addRecipeInformation: "true" });
+  //   addRecipeNutrition: "true",
+  //   instructionsRequired: "true"
+  // });
   // Fetch API Data
-  fetch(mealsURL + `${searchInput}`)
+  fetch(mealsURL)
     .then(response => response.json())
     .then(data => {
       console.log(data);
